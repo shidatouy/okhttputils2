@@ -1,0 +1,2 @@
+rootProject.name = "fqq_test"
+include ':app','okhttputils2'
