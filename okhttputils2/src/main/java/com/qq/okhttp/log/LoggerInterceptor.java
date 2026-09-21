@@ -62,6 +62,7 @@ public class LoggerInterceptor implements Interceptor {
     private void logForRequest(Request request) {
         try {
             Log.e(tag, "========request'log=======");
+            Log.e(tag, "========   start   =======");
             Log.e(tag, "method  : " + request.method());
             Log.e(tag, "url     : " + request.url());
 
@@ -83,7 +84,7 @@ public class LoggerInterceptor implements Interceptor {
                 }
             }
 
-            Log.e(tag, "========request'log=======end");
+            Log.e(tag, "========   end   =======");
         } catch (Exception e) {
             Log.e(tag, "logForRequest error: " + e.getMessage());
         }
