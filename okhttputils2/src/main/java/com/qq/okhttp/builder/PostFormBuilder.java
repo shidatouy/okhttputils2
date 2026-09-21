@@ -1,13 +1,12 @@
 package com.qq.okhttp.builder;
 
-import com.socks.library.KLog;
+import android.util.Log;
+
 import com.qq.okhttp.request.PostFormRequest;
 import com.qq.okhttp.request.RequestCall;
-import com.qq.okhttp.utils.Util;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,7 +60,6 @@ public class PostFormBuilder extends OkHttpRequestBuilder<PostFormBuilder> imple
     @Override
     public PostFormBuilder params(Map<String, Object> params) {
         this.params = params;
-        params(url, this.params);
         return this;
     }
 
@@ -72,14 +70,6 @@ public class PostFormBuilder extends OkHttpRequestBuilder<PostFormBuilder> imple
         }
         params.put(key, val);
         return this;
-    }
-
-    public static void params(String url, Map<String, Object> map) {
-        String params = "";
-        for (Map.Entry<String, Object> entry : map.entrySet()) {
-            params += entry.getKey() + "=" + entry.getValue() + "&";
-        }
-        KLog.i("  ------ 请求参数：" + url + "?" + params);
     }
 
 }

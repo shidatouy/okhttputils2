@@ -8,6 +8,7 @@ import android.view.View;
 import com.example.fqq_test.databinding.ActivityMainBinding;
 import com.qq.okhttp.OkHttpUtils2;
 import com.qq.okhttp.callback.StringCallback;
+import com.qq.okhttp.log.LoggerInterceptor;
 
 import java.util.HashMap;
 
@@ -17,6 +18,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import okhttp3.Call;
+import okhttp3.OkHttpClient;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
+        OkHttpClient okHttpClient =new  OkHttpClient.Builder()
+                .addInterceptor(new LoggerInterceptor("OkHttpUtils",false,true))
+                        .build();
+        OkHttpUtils2.initClient(okHttpClient);
+
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 map.put("user", "宗理锋");
                 OkHttpUtils2.post()
 //                        .addHeader("token", "8sxomi3XFZsgXeUntYMLUuw1JNpwKORjZ7/maU9BvTs=")
-                        .url("http://192.168.11.81:8090/zdata_interface/cus1-cusLogin")
+                        .url("http://192.168.1.24:8010/app/getRecorderShixunInfos")
                         .params(map)
                         .build()
                         .execute(new StringCallback() {

@@ -1,6 +1,5 @@
 package com.qq.okhttp;
 
-import com.socks.library.KLog;
 import com.qq.okhttp.builder.GetBuilder;
 import com.qq.okhttp.builder.HeadBuilder;
 import com.qq.okhttp.builder.OtherRequestBuilder;
@@ -120,11 +119,9 @@ public class OkHttpUtils2 {
                     }
 
                     Object o = finalCallback.parseNetworkResponse(response, id);
-                    KLog.i("结  果  -----  ： "+o.toString());
                     sendSuccessResultCallback(o, finalCallback, id);
                 } catch (Exception e) {
                     sendFailResultCallback(call, e, finalCallback, id);
-                    KLog.i("错误信息 -----  ： "+e.getMessage());
                 } finally {
                     if (response.body() != null)
                         response.body().close();
