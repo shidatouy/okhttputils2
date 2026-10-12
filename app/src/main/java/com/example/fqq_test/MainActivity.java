@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
         OkHttpClient okHttpClient =new  OkHttpClient.Builder()
-                .addInterceptor(new LoggerInterceptor("OkHttpUtils",false,true))
+                .addInterceptor(new LoggerInterceptor())
                         .build();
         OkHttpUtils2.initClient(okHttpClient);
 
